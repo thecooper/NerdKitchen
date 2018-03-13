@@ -11,6 +11,13 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@models/*": ["app/models/*"],
+      "@services/*": ["app/services/*"],
+      "@services": ["app/services/index"]
+    },
     "lib": [
       "es2017",
       "dom"
