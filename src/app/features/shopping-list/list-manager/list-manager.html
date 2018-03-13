@@ -1,0 +1,7 @@
+<h2>Shopping List&nbsp;
+	<button class="btn btn-success" (click)="AddNewList()"><span class="fa fa-plus"></span></button>
+</h2>
+
+<div *ngFor="let list of Lists">
+	<shopping-list (ListDeleted)="DeleteList($event)" (ListClicked)="SaveList($event)"></shopping-list>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h2>Pantry
+				<button class="btn btn-success" (click)="addNewArea()">
+					<span class="fa fa-plus"></span>
+				</button>
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card" *ngFor="let area of storageAreas; let i = index">
+				<div class="card-block">
+					<storage [Area]="area"></storage>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

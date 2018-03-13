@@ -1,0 +1,54 @@
+<div class=''>
+	<div class="row">
+		<div class="col-8">
+			<div *ngIf="!Edit">
+				<span>{{Ingredient.Quantity}}</span>
+				<span>{{Ingredient.UnitOfMeasure}}</span>
+				<span>{{Ingredient.Name}}</span>
+			</div>
+			<div class="input-group" *ngIf="Edit">
+				<input class="form-control" placeholder="qty" type="number" [(ngModel)]="Ingredient.Quantity"/>
+				<input class="form-control" placeholder="units" type="text" [(ngModel)]="Ingredient.UnitOfMeasure"/>
+				<input class="form-control" placeholder="ingredient" type="text" [(ngModel)]="Ingredient.Name"/>
+			</div>
+		</div>
+		<div class="col-4">
+			<span class="form-row" *ngIf="Edit">
+				<div class="btn-group" role="group">
+					<button class="btn btn-success p-2" type="button" (click)="ToggleEdit()"><span class="fa fa-save"></span></button>
+					<div class="btn-group">
+				    	<button class="btn btn-success dropdown-toggle p-2" type="button" id="saveActionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+		    	  		<div class="dropdown-menu" aria-labelledby="saveActionDropdown">
+			    			<a class="dropdown-item" (click)="Delete()" href="#">Delete</a>
+		    	  		</div>
+					</div>
+		    	</div>
+		    </span>
+		    <span class="text-right" *ngIf="!Edit">
+		    	<div class="btn-group" role="group">
+					<button class="btn btn-primary p-2" type="button" (click)="ToggleEdit()"><span class="fa fa-edit"></span></button>
+
+					<div class="btn-group">
+				    	<button class="btn btn-primary dropdown-toggle p-2" type="button" id="ingredientActionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+		    	  		<div class="dropdown-menu" aria-labelledby="ingredientActionDropdown">
+			    			<a class="dropdown-item" (click)="Delete()" href="#">Delete</a>
+		    	  		</div>
+					</div>
+		    	</div>
+			</span>
+		</div>
+		<div class="col-12">
+			<select [(ngModel)]="Ingredient.Category" *ngIf="Edit">
+				<option value="1">Vegetable</option>
+				<option value="2">Meat</option>
+				<option value="3">Dairy</option>
+				<option value="4">Bread</option>
+				<option value="5">Cereal</option>
+				<option value="6">Spices</option>
+				<option value="7">SoftDrink</option>
+				<option value="8">Other</option>
+			</select>
+			<div *ngIf="!Edit">{{GetCategoryName(Ingredient.Category)}}</div>
+		</div>
+	</div>
+</div>

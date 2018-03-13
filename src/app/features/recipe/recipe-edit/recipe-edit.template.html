@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-block">
+        <h2 class="card-title">
+            <span *ngIf="!Editing" (click)="EnableEdit()">{{Recipe.Name}}</span>
+            <div class="input-group" *ngIf="Editing">
+              <input class="form-control" type="text" [(ngModel)]="Recipe.Name"/>
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" (click)="CancelEdit()" type="button"><span class="fa fa-close"></span></button>
+              </span>
+            </div>
+        </h2>
+        <div class="card-text">
+            <p>
+                <button class="btn btn-primary" type="button" (click)="AddIngredient()">
+                    <span class="fa fa-plus"></span><span>&nbsp;Ingredient</span>
+                </button>
+            </p>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let ingredient of Recipe.Ingredients">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div [Ingredient]="ingredient" (DeleteIngredient)="IngredientDeleted($event)"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <button mat-raised-button color="primary" *ngIf="!Editing" (click)="SaveRecipe()">Save</button>
+        <button mat-raised-button color="warn" *ngIf="!Editing" (click)="DeleteRecipe()">Delete</button>
+    </div>
+</div>
