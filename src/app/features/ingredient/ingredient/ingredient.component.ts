@@ -4,8 +4,6 @@ import { IngredientCategory } from '../ingredient-category'
 
 @Component({
 	selector:'[Ingredient]',
-	inputs:['Ingredient'],
-	outputs:['UpdateIngredient', 'DeleteIngredient'],
 	styleUrls:[],
 	templateUrl:'./ingredient.html'
 })
@@ -17,7 +15,9 @@ export class IngredientComponent {
 	Edit:Boolean;
 
 	ngOnInit() {
-		if(this.Ingredient.Quantity == null || this.Ingredient.Name == null || this.Ingredient.Name == "") {
+		console.log(this.Ingredient);
+		if(this.Ingredient.Quantity == null && this.Ingredient.UnitOfMeasure == "" && this.Ingredient.Name == "") {
+			console.log("Editing the ingredient!");
 			this.Edit = true;
 		} else {
 			this.Edit = false;

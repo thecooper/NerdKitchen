@@ -1,31 +1,25 @@
-<div class="card">
-    <div class="card-block">
-        <h2 class="card-title">
-            <span *ngIf="!Editing" (click)="EnableEdit()">{{Recipe.Name}}</span>
-            <div class="input-group" *ngIf="Editing">
-              <input class="form-control" type="text" [(ngModel)]="Recipe.Name"/>
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" (click)="CancelEdit()" type="button"><span class="fa fa-close"></span></button>
-              </span>
-            </div>
-        </h2>
-        <div class="card-text">
-            <p>
-                <button class="btn btn-primary" type="button" (click)="AddIngredient()">
-                    <span class="fa fa-plus"></span><span>&nbsp;Ingredient</span>
-                </button>
-            </p>
-            <ul class="list-group">
-                <li class="list-group-item" *ngFor="let ingredient of Recipe.Ingredients">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div [Ingredient]="ingredient" (DeleteIngredient)="IngredientDeleted($event)"></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <button mat-raised-button color="primary" *ngIf="!Editing" (click)="SaveRecipe()">Save</button>
-        <button mat-raised-button color="warn" *ngIf="!Editing" (click)="DeleteRecipe()">Delete</button>
-    </div>
-</div>
+<mat-card>
+    <mat-card-header>
+        <h1><span *ngIf="!Editing">{{Recipe.Name}}</span></h1>
+        <mat-form-field *ngIf="Editing">
+            <input matInput type="text" placeholder="Recipe Name"/>
+        </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+        <button mat-raised-button type="button" (click)="AddIngredient()">+ Ingredient</button>
+        <mat-accordion>
+            <mat-expansion-panel #ingredientPanel *ngFor="let ingredient of Recipe.Ingredients">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{ingredient.Quantity + " " + ingredient.UnitOfMeasure + " " + ingredient.Name}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div [Ingredient]="ingredient" (DeleteIngredient)="IngredientDeleted($event)"></div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" *ngIf="!Editing" (click)="EnableEdit()">Edit</button>
+        <button mat-raised-button color="primary" *ngIf="Editing" (click)="SaveRecipe()">Save</button>
+        <button mat-raised-button *ngIf="Editing" (click)="DeleteRecipe()">Delete</button>
+    </mat-card-actions>
+</mat-card>

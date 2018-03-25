@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/of';
 
 import { Recipe } from '@app/features/recipe/recipe'
+import { Ingredient } from '@app/features/ingredient/ingredient'
+import { IngredientCategory } from '@app/features/ingredient/ingredient-category'
 
 @Injectable()
 export class RecipeService {
@@ -15,7 +17,16 @@ export class RecipeService {
 				Revision:"1",
 				Name:"Pork Chops",
 				Servings:4,
-				Ingredients:[],
+				Ingredients:[
+					{
+						Quantity:1,
+						Name:"Pork Shoulder",
+						UnitOfMeasure:"lbs",
+						Nutrition:null,
+						Tags:[],
+						Category:IngredientCategory.Meat,
+					}
+				],
 				TotalNutrition:null,
 			},
 			{
@@ -36,7 +47,7 @@ export class RecipeService {
 			}
 		];
 
-	constructor(private http:Http) { }
+	constructor() { }
 
 	all() : Observable<Recipe[]> {
 		return Observable.of(this.recipeStore);

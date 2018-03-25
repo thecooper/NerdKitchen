@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import { Recipe } from '@app/features/recipe/recipe'
 
 @Injectable()
-export class RecipeService {
+export class zRecipeService {
 
 	constructor(private http:Http) {
 

@@ -43,7 +43,7 @@ export class RecipeEditComponent {
 	DeleteRecipe() {
 		if(this.Recipe.Id != null) {
 			this.recipeService.delete(this.Recipe).subscribe(result => {
-				if(result.ok) {
+				if(result) {
 					this.Deleted.emit(this.Recipe);
 				} else {
 					// TODO: Error Handling

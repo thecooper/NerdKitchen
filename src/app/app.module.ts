@@ -3,10 +3,6 @@ import { CommonModule } from '@angular/common'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
-import { 
-  MatToolbarModule,
-  MatButtonModule
- } from '@angular/material'
 
 import { AppComponent } from './app.component'
 
@@ -14,6 +10,7 @@ import { ServicesModule } from './services/services.module'
 import { FeaturesModule } from './features/features.module';
 import { HomeComponent } from './home/home.component';
 import { NgMaterialModule } from './/ng-material.module'
+import { AngularCommonModule } from "@app/angular-common.module";
 
 let routes : Routes = [
   {
@@ -33,8 +30,7 @@ let routes : Routes = [
     ServicesModule, 
     FeaturesModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule,
-    MatButtonModule
+    AngularCommonModule,
   ],
   declarations: [ 
     AppComponent, HomeComponent
