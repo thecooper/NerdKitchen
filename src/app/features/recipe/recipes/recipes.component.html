@@ -1,8 +1,0 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-    <h1>Recipe Manager
-        <button mat-button mat-raised-button color="accent" type="button" (click)="CreateNewRecipe()"><mat-icon>note_add</mat-icon></button>
-    </h1>
-</nav>
-<div *ngFor="let recipe of recipes" style="margin:1em 0;">
-    <recipe [Recipe]="recipe" (Deleted)="RecipeUpdated($event)"></recipe>
-</div>

@@ -2,19 +2,21 @@ import { Ingredient } from '@app/features/ingredient/ingredient'
 import { Nutrition } from './nutrition'
  
 export class Recipe {
-	Id:string;
-	Revision:string;
+	Id?:string;
+	Revision?:string;
 	Name:string;
 	Servings:number;
 	Ingredients:Ingredient[];
 	TotalNutrition:Nutrition;
 
-	// constructor() {
-	// 	this.Name = "New Recipe";
-	// 	this.Servings = 0;
-	// 	this.Ingredients = [];
-	// 	this.TotalNutrition = new Nutrition();
-	// }
+	constructor() {
+		this.Id = null;
+		this.Revision = null;
+		this.Name = "";
+		this.Servings = 0;
+		this.Ingredients = [];
+		this.TotalNutrition = new Nutrition();
+	}
 
 	// UpdateNutrition() {
 	// 	var totalCalories = 0;

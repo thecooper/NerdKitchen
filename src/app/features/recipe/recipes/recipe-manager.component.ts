@@ -4,7 +4,8 @@ import { RecipeService } from '@services'
 
 @Component({
 	selector:'recipe-manager',
-	templateUrl:'./recipes.component.html',
+	templateUrl:'./recipe-manager.component.html',
+	styleUrls: ['./recipe-manager.component.scss'],
 	providers:[RecipeService]
 })
 export class RecipesComponent {
@@ -23,7 +24,7 @@ export class RecipesComponent {
 	}
 
 	CreateNewRecipe() {
-		this.recipes.push(new Recipe());
+		this.recipes.unshift(new Recipe());
 	}
 
 	RecipeUpdated(recipe:Recipe) {

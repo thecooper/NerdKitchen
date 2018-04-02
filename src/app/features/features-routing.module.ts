@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IngredientComponent } from "./ingredient/ingredient/ingredient.component";
-import { IngredientEditComponent } from "./ingredient/ingredient-editor/ingredient-editor.component";
 
-import { RecipesComponent } from "./recipe/recipes/recipes.component";
+import { RecipesComponent } from "./recipe/recipes/recipe-manager.component";
 import { RecipeEditComponent } from "./recipe/recipe-edit/recipe-edit.component";
 
 import { PantriesComponent } from "./pantries/pantries/pantries.component";
@@ -16,12 +15,6 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list/shopping-li
 const routes: Routes = [
   { path: "ingredients", 
     component: IngredientComponent,
-    children: [
-      {
-        path: "edit/:id",
-        component: IngredientEditComponent
-      }
-    ]
   },
   {
     path: "recipes",

@@ -7,7 +7,7 @@ import {
 	MatIconModule
 } from '@angular/material'
 
-import { RecipesComponent } from './recipes/recipes.component'
+import { RecipesComponent } from './recipes/recipe-manager.component'
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component'
 
 import { IngredientsModule } from '@app/features/ingredient/ingredients.module'

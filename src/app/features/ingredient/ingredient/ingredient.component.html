@@ -1,0 +1,47 @@
+<div class="ingredient">
+	<form #ingredientForm="ngForm">
+		<div class="ingredient-body">
+			<div *ngIf="edit; else ingredientViewElseBlock">
+				<mat-form-field style.width="40">
+					<input matInput required placeholder="qty" type="number" name="quantity" [(ngModel)]="value.Quantity"/>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput required placeholder="units" type="text" name="unit_of_measure" [(ngModel)]="value.UnitOfMeasure"/>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput required placeholder="ingredient" type="text" name="name" [(ngModel)]="value.Name"/>
+				</mat-form-field>
+				<mat-form-field>
+					<mat-select required placeholder="Category" [(value)]="value.Category">
+						<mat-option [value]="CategoryValues.Vegetable">Vegetable</mat-option>
+						<mat-option [value]="CategoryValues.Meat">Meat</mat-option>
+						<mat-option [value]="CategoryValues.Dairy">Dairy</mat-option>
+						<mat-option [value]="CategoryValues.Bread">Bread</mat-option>
+						<mat-option [value]="CategoryValues.Cereal">Cereal</mat-option>
+						<mat-option [value]="CategoryValues.Spices">Spices</mat-option>
+						<mat-option [value]="CategoryValues.SoftDrink">Soft Drink</mat-option>
+						<mat-option [value]="CategoryValues.Other">Other</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<ng-template #ingredientViewElseBlock>
+				<span>{{value.Quantity}}&nbsp;{{value.UnitOfMeasure}}&nbsp;{{value.Name}}</span>
+				<span class="ingredient-category-view">
+					<mat-chip-list>
+						<mat-chip>{{GetCategoryName(value.Category)}}</mat-chip>
+					</mat-chip-list>
+				</span>
+			</ng-template>
+		</div>
+		<div *ngIf="CanEdit" class="ingredient-controls">
+			<div *ngIf="!edit">
+				<button mat-button color="primary" (click)="Edit()">edit</button>
+				<button mat-button color="primary" (click)="Delete()">remove</button>
+			</div>
+			<div *ngIf="edit">
+				<button mat-raised-button color="primary" [disabled]="!ingredientForm.form.valid" (click)="Save()">save</button>
+				<button mat-button color="warn" (click)="Cancel()">cancel</button>
+			</div>
+		</div>
+	</form>
+</div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { AppComponent } from './app.component'
 
@@ -31,6 +32,7 @@ let routes : Routes = [
     FeaturesModule,
     RouterModule.forRoot(routes),
     AngularCommonModule,
+    FlexLayoutModule,
   ],
   declarations: [ 
     AppComponent, HomeComponent

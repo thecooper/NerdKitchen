@@ -1,0 +1,18 @@
+.ingredient form {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ingredient-category-view {
+    padding:0 0.5em;
+    display:inline-block;
+}
+
+.ingredient-body, .ingredient-controls {
+    
+}
+
+.ingredient-controls button {
+    width:40px;
+}

@@ -29,7 +29,7 @@
 		<div id="IngredientList{{i}}" class="collapse">
 			<ul class="list-group">
 				<li class="list-group-item" *ngFor="let ingredient of Area.Ingredients">
-					<div [Ingredient]="ingredient" (DeleteIngredient)="ingredientDeleted(ingredient)"></div>
+					<Ingredient [value]="ingredient" (DeleteIngredient)="ingredientDeleted(ingredient)"></Ingredient>
 				</li>
 			</ul>
 		</div>

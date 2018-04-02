@@ -1,25 +1,32 @@
 <mat-card>
     <mat-card-header>
-        <h1><span *ngIf="!Editing">{{Recipe.Name}}</span></h1>
-        <mat-form-field *ngIf="Editing">
-            <input matInput type="text" placeholder="Recipe Name"/>
-        </mat-form-field>
+        <mat-card-title class="recipe-title">
+            <h3 *ngIf="!Editing; else titleElseBlock">{{recipe.Name}}</h3>
+            <ng-template #titleElseBlock>
+                <mat-form-field *ngIf="Editing">
+                    <input matInput type="text" placeholder="Recipe Name" [(ngModel)]="recipe.Name"/>
+                </mat-form-field>
+            </ng-template>
+        </mat-card-title>
+        <mat-card-subtitle>
+        </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <button mat-raised-button type="button" (click)="AddIngredient()">+ Ingredient</button>
-        <mat-accordion>
-            <mat-expansion-panel #ingredientPanel *ngFor="let ingredient of Recipe.Ingredients">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>{{ingredient.Quantity + " " + ingredient.UnitOfMeasure + " " + ingredient.Name}}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div [Ingredient]="ingredient" (DeleteIngredient)="IngredientDeleted($event)"></div>
-            </mat-expansion-panel>
-        </mat-accordion>
+        <h4 class="recipe-ingredients-list-header">
+            <span>Ingredients</span>
+            <button *ngIf="Editing" mat-icon-button color="accent" (click)="AddIngredient()"><mat-icon>add</mat-icon></button>
+        </h4>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let ingredient of recipe.Ingredients">
+                <Ingredient [value]="ingredient" [CanEdit]="Editing" (Delete)="IngredientDeleted($event)" (Cancel)="CancelIngredient($event)"></Ingredient>
+            </mat-list-item>
+        </mat-list>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" *ngIf="!Editing" (click)="EnableEdit()">Edit</button>
-        <button mat-raised-button color="primary" *ngIf="Editing" (click)="SaveRecipe()">Save</button>
-        <button mat-raised-button *ngIf="Editing" (click)="DeleteRecipe()">Delete</button>
+        <button mat-button *ngIf="!Editing" color="primary" (click)="EnableEdit()">edit</button>
+        <button mat-button *ngIf="!Editing" color="warn" (click)="DeleteRecipe()">delete</button>
+        <button mat-raised-button *ngIf="Editing" color="accent" (click)="SaveRecipe()">save</button>
+        <button mat-button *ngIf="Editing" color="warn" (click)="CancelEdit()">cancel</button>
     </mat-card-actions>
 </mat-card>
