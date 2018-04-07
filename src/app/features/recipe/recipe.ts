@@ -8,6 +8,7 @@ export class Recipe {
 	Servings:number;
 	Ingredients:Ingredient[];
 	TotalNutrition:Nutrition;
+	ImageUrl:string;
 
 	constructor() {
 		this.Id = null;
@@ -15,6 +16,7 @@ export class Recipe {
 		this.Name = "";
 		this.Servings = 0;
 		this.Ingredients = [];
+		this.ImageUrl = "";
 		this.TotalNutrition = new Nutrition();
 	}
 

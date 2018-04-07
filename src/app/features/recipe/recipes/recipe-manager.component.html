@@ -1,9 +1,10 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-    <h1>
-        <span>Recipe Manager</span>
-        <button mat-button mat-raised-button color="accent" type="button" (click)="CreateNewRecipe()">Add Recipe</button>
-    </h1>
-</nav>
-<div *ngFor="let recipe of recipes" style="margin:1em 0;">
-    <recipe [value]="recipe" (Deleted)="RecipeUpdated($event)"></recipe>
-</div>
+<mat-toolbar color="primary">
+    <span>Recipe Manager</span>
+    <button mat-button mat-raised-button color="accent" type="button" (click)="CreateNewRecipe()">Add Recipe</button>
+</mat-toolbar>
+<mat-grid-list cols="4" rowHeight="4:3" gutterSize="1em">
+    <mat-grid-tile *ngFor="let recipe of recipes" [style.background-image]="'url('+recipe.ImageUrl+')'">
+        <h2>{{recipe.Name}}</h2>
+        <div>Ingredients: {{recipe.Ingredients?.length}}</div>
+    </mat-grid-tile>
+</mat-grid-list>

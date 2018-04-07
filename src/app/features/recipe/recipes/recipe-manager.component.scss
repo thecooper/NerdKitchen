@@ -3,3 +3,14 @@ h1 {
     align-items:center;
     justify-content: space-between;
 }
+
+mat-grid-list {
+    margin:1em 0;
+    
+    mat-grid-tile {
+        background-color:#ccc;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

@@ -28,6 +28,7 @@ export class RecipeService {
 					}
 				],
 				TotalNutrition:null,
+				ImageUrl:""
 			},
 			{
 				Id:"2",
@@ -36,6 +37,7 @@ export class RecipeService {
 				Servings:3,
 				Ingredients:[],
 				TotalNutrition:null,
+				ImageUrl:"https://gregfly.com/wp-content/uploads/2015/04/homemade-soft-tacos-with-Einkorn-flour-tortillas.jpg"
 			},
 			{
 				Id:"3",
@@ -44,6 +46,7 @@ export class RecipeService {
 				Servings:16,
 				Ingredients:[],
 				TotalNutrition:null,
+				ImageUrl:"https://media4.s-nbcnews.com/i/newscms/2015_51/902591/raos_meatballs-rao-today-151216-tease_61f42434a9b5fac13d671cc08a4e798b.jpg"
 			}
 		];
 
