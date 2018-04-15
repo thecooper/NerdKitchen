@@ -8,6 +8,7 @@ import 'rxjs/add/observable/of';
 import { Recipe } from '@app/features/recipe/recipe'
 import { Ingredient } from '@app/features/ingredient/ingredient'
 import { IngredientCategory } from '@app/features/ingredient/ingredient-category'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class RecipeService {
@@ -28,7 +29,7 @@ export class RecipeService {
 					}
 				],
 				TotalNutrition:null,
-				ImageUrl:""
+				ImageUrl:"https://hips.hearstapps.com/del.h-cdn.co/assets/17/34/2048x1365/gallery-1503418779-pork-chops-delish.jpg?resize=768:*"
 			},
 			{
 				Id:"2",
@@ -53,14 +54,27 @@ export class RecipeService {
 	constructor() { }
 
 	all() : Observable<Recipe[]> {
-		return Observable.of(this.recipeStore);
+		return new BehaviorSubject<Recipe[]>(this.recipeStore);
 	}
 
 	get(id:string) : Observable<Recipe> {
-		return Observable.of(this.recipeStore.find((val, index) => { return val.Id === id; }))
+		return new BehaviorSubject<Recipe>(this.recipeStore.find((val, index) => { return val.Id === id; }))
 	}
 
 	save(recipe:Recipe) : Observable<boolean> {
+		let matchedRecipe = this.recipeStore.find((r:Recipe) => r.Id === recipe.Id);
+
+		if(matchedRecipe) {
+			let recipeIndex = this.recipeStore.indexOf(matchedRecipe);
+			this.recipeStore[recipeIndex] = recipe;
+		} else {
+			let nextId : number = +this.recipeStore.reduce((prevVal:number, currVal:Recipe, currIndex:number, origArr:Recipe[]) => {
+				return (+currVal.Id > prevVal) ? currVal : prevVal;
+			}, 0) + 1;
+
+			recipe.Id = nextId.toString();
+			this.recipeStore.push(recipe);
+		}
 		return Observable.of(true);
 	}
 

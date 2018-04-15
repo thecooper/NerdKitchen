@@ -14,7 +14,7 @@ import { ShoppingListModule } from "@app/features/shopping-list/shopping-list.mo
     IngredientsModule,
     RecipesModule,
     PantriesModule,
-    ShoppingListModule
+    ShoppingListModule,
   ],
   exports: [
     CommonModule,

@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+    <div>
+        <button mat-icon-button routerLink=".."><mat-icon>arrow_back</mat-icon></button>
+        <h2>{{recipe?.Name}}</h2>
+    </div>
+    <div>
+        <button mat-raised-button color="accent" (click)="Save()">save</button>
+        <button mat-button routerLink="..">cancel</button>
+        <mat-menu #recipeOptions="matMenu">
+            <button mat-menu-item>delete</button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="recipeOptions"><mat-icon>more_vert</mat-icon></button>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+    <h3>Nutrition</h3>
+    <div>
+        Calories: ???
+    </div>
+    <div>
+        Carbohydrates: ???
+    </div>
+    <div>
+        Fat: ???
+    </div>
+    <div>
+        Protein: ???
+    </div>
+    <h3>Ingredients</h3>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item *ngFor="let ingredient of recipe?.Ingredients">
+            <mat-form-field>
+                <input matInput [(ngModel)]="ingredient.Quantity"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="ingredient.UnitOfMeasure"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="ingredient.Name"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select [(value)]="ingredient.Category">
+                    <mat-option [value]="ingredientCategories.Vegetable">Vegetable</mat-option>
+                    <mat-option [value]="ingredientCategories.Meat">Meat</mat-option>
+                    <mat-option [value]="ingredientCategories.Dairy">Dairy</mat-option>
+                    <mat-option [value]="ingredientCategories.Bread">Bread</mat-option>
+                    <mat-option [value]="ingredientCategories.Cereal">Cereal</mat-option>
+                    <mat-option [value]="ingredientCategories.Spices">Spices</mat-option>
+                    <mat-option [value]="ingredientCategories.SoftDrink">Soft Drink</mat-option>
+                    <mat-option [value]="ingredientCategories.Other">Other</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-list-item>
+    </mat-list>
+</div>

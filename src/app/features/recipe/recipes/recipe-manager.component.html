@@ -1,10 +1,14 @@
 <mat-toolbar color="primary">
     <span>Recipe Manager</span>
-    <button mat-button mat-raised-button color="accent" type="button" (click)="CreateNewRecipe()">Add Recipe</button>
 </mat-toolbar>
 <mat-grid-list cols="4" rowHeight="4:3" gutterSize="1em">
-    <mat-grid-tile *ngFor="let recipe of recipes" [style.background-image]="'url('+recipe.ImageUrl+')'">
-        <h2>{{recipe.Name}}</h2>
-        <div>Ingredients: {{recipe.Ingredients?.length}}</div>
+    <mat-grid-tile *ngFor="let recipe of recipes" [style.background-image]="'url(' + recipe.ImageUrl + ')'" (click)="viewRecipe(recipe.Id)">
+        <mat-toolbar>
+            <div class="recipe-title">{{recipe.Name}}</div><br/>
+        </mat-toolbar>
+        <mat-toolbar class="recipe-info">
+
+        </mat-toolbar>
     </mat-grid-tile>
 </mat-grid-list>
+<button mat-fab color="accent" type="button" (click)="CreateNewRecipe()"><mat-icon>add</mat-icon></button>

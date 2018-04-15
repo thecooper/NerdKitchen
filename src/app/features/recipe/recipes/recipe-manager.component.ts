@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { Recipe } from '../recipe'
 import { RecipeService } from '@services'
+import { Router } from '@angular/router';
 
 @Component({
 	selector:'recipe-manager',
@@ -11,7 +12,7 @@ import { RecipeService } from '@services'
 export class RecipesComponent {
 	recipes:Recipe[]
 
-	constructor(private recipeService:RecipeService) {
+	constructor(private recipeService:RecipeService, private router:Router) {
 		
 	}
 
@@ -31,5 +32,10 @@ export class RecipesComponent {
 		this.recipes = this.recipes.filter((r, index, all) => {
 			return r != recipe;
 		});
+	}
+
+	viewRecipe(id:number) {
+		console.log("Id: ", id);
+		this.router.navigate(["recipes", id]);
 	}
 }

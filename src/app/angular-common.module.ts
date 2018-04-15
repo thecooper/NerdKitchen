@@ -17,6 +17,7 @@ import {
   MatInputModule,
   MatExpansionModule,
   MatChipsModule,
+  MatMenuModule,
 } from '@angular/material'
 
 @NgModule({
@@ -37,6 +38,7 @@ import {
     MatInputModule,
     MatExpansionModule,
     MatChipsModule,
+    MatMenuModule,
   ],
   exports: [
     CommonModule,
@@ -55,6 +57,7 @@ import {
     MatInputModule,
     MatExpansionModule,
     MatChipsModule,
+    MatMenuModule,
   ],
   declarations: []
 })

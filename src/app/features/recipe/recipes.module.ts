@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AngularCommonModule } from '@app/angular-common.module';
 
@@ -8,23 +9,25 @@ import {
 } from '@angular/material'
 
 import { RecipesComponent } from './recipes/recipe-manager.component'
-import { RecipeEditComponent } from './recipe-edit/recipe-edit.component'
+import { RecipeComponent } from './recipe/recipe.component'
 
-import { IngredientsModule } from '@app/features/ingredient/ingredients.module'
+import { IngredientsModule } from '@app/features/ingredient/ingredients.module';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component'
 
 @NgModule({
 	imports:[
 		AngularCommonModule,
 		IngredientsModule,
 		MatButtonModule,
-		MatIconModule
+		MatIconModule,
+		RouterModule
 	],
 	declarations: [
-		RecipeEditComponent, 
-		RecipesComponent,
+		RecipeComponent, 
+		RecipesComponent, RecipeEditComponent,
 	],
 	exports: [
-		RecipeEditComponent, 
+		RecipeComponent, 
 		RecipesComponent
 	],
 	providers: []

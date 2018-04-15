@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+    <div>
+        <button mat-icon-button routerLink=".."><mat-icon>arrow_back</mat-icon></button>
+        <h2>{{recipe.Name}}</h2>
+    </div>
+    <div>
+        <button mat-fab color="accent" [routerLink]="'edit'"><mat-icon>create</mat-icon></button>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+    <h3>Nutrition</h3>
+    <div>
+        Calories: ???
+    </div>
+    <div>
+        Carbohydrates: ???
+    </div>
+    <div>
+        Fat: ???
+    </div>
+    <div>
+        Protein: ???
+    </div>
+    <h3>Ingredients</h3>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item *ngFor="let ingredient of recipe.Ingredients">
+            {{ingredient.Quantity}} {{ingredient.UnitOfMeasure}} {{ingredient.Name}}
+        </mat-list-item>
+    </mat-list>
+</div>

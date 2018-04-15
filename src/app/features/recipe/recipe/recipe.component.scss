@@ -5,4 +5,9 @@ mat-toolbar {
     h2 {
         display:inline-block;
     }
+
+    button[mat-fab] {
+        position:relative;
+        top:2em;
+    }
 }
